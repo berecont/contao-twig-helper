@@ -1,0 +1,34 @@
+
+<ul class="package-list">
+    {% for package in packages %}
+{% dump package.video %}
+    <li {% if package.anchor is defined %}id="{{ package.anchor }}"{% endif %}>
+        <div class="package-card">
+            <div class="mediawrapper">
+                {% if package.image and not package.video %}
+                    {% set options = {} %}
+                    {% set figure = contao_figure(package.image, options) %}
+                    {{ figure|raw }}
+                {% elseif package.image and package.video %}      
+
+                {### start own twig-filter ###}
+                    {% set backvideo = package.video|contao_find_file_by_uuid %}
+                    <video autoplay muted loop style="width:100%">
+                        <source type="video/mp4" src="{{ backvideo }}">
+                    </video>  
+                {### stop own twig-filter ###}
+              
+                {% else %}
+                    {% set options = {} %}
+                    {% set figure = contao_figure(package.image, options) %}
+                    {{ figure|raw }}
+                {% endif %}
+            </div>
+
+          {# ... more code in original file #}
+          
+        </div>
+    </li>
+
+    {% endfor %}
+</ul>
