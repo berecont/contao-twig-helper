@@ -37,6 +37,7 @@ oder wenn `size` mit im Backend definiert ist:
 ```  
 
 ### Übersetzungen  
+[Contao Forum](https://community.contao.org/de/showthread.php?86761-rsce_mytemplate-html-twig-%C3%9Cbersetzung-ausgeben)  
 ```
 'types' => [
     'label' => ['Art der Werbung','die Art der Werbung auswählen'],
