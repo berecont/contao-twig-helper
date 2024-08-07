@@ -97,3 +97,9 @@ Ausgabe im Frontend aus einer Liste `'inputType' => 'list'`:
 <p class="text">{{ ('MSC.' ~ package.types)|trans({}, 'contao_default') }}</p>
 ```
 
+### Dateipfad auslesen  
+siehe `/templates/theme/rsce_packagelist.html.twig` und `/src/Twig/AppExtension.php`  
+
+
+
+
