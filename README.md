@@ -54,7 +54,7 @@ oder wenn `size` mit im Backend definiert ist:
     'reference' => &$GLOBALS['TL_LANG']['MSC']['promotype'],
 ],
 ```
-für die Backenanzeige: `/contao/languages/de/default.php`  
+für die Backendanzeige: `/contao/languages/de/default.php`  
 ```
 <?php
 
@@ -99,6 +99,17 @@ Ausgabe im Frontend aus einer Liste `'inputType' => 'list'`:
 
 ### Dateipfad auslesen  
 siehe `/templates/theme/rsce_packagelist.html.twig` und `/src/Twig/AppExtension.php`  
+
+### Insert Tags ausgeben  
+```
+<p>{{ insert_tag('page::title') }}</p>
+```
+oder für Email (mit der Variablen 'email'):  
+```
+<p>{{ insert_tag('email::' ~ email) | raw }}</p>
+```
+
+
 
 
 
