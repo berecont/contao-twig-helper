@@ -108,6 +108,11 @@ oder für Email (mit der Variablen 'email'):
 ```
 <p>{{ insert_tag('email::' ~ email) | raw }}</p>
 ```
+weiters kann die erzeugte Klasse mit befüllt werden:  
+```
+{% set emailLink = insert_tag('email::' ~ email) %}
+{{ emailLink | replace({'class="email"': 'class="email text-dark"'}) | raw }}
+```
 
 
 
