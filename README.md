@@ -114,6 +114,13 @@ weiters kann die erzeugte Klasse mit befüllt werden:
 {{ emailLink | replace({'class="email"': 'class="email text-dark"'}) | raw }}
 ```
 
+### Leerzeichen vermeiden und hinzufügen  
+```
+<div class="hero-thumb1{{ thumbclassLeft is not empty ? ' ' ~ thumbclassLeft : '' }}"
+```
+In diesem Beispiel prüft der Ausdruck, ob `thumbclassLeft` nicht leer ist (`thumbclassLeft is not empty`). Wenn das der Fall ist, wird ein Leerzeichen (`' '`) hinzugefügt und dann der Wert von `thumbclassLeft`. Wenn die Variable leer ist, wird einfach ein leerer String (`''`) verwendet.  
+Das sorgt dafür, dass im HTML `class="hero-thumb1 thumbclassLeft"` ausgegeben wird, wenn `thumbclassLeft` gesetzt ist, und nur `class="hero-thumb1"` wenn nicht.
+
 
 
 
