@@ -132,6 +132,16 @@ In diesem Beispiel prüft der Ausdruck, ob `thumbclassLeft` nicht leer ist (`thu
 Das sorgt dafür, dass im HTML `class="hero-thumb1 thumbclassLeft"` ausgegeben wird, wenn `thumbclassLeft` gesetzt ist, und nur `class="hero-thumb1"` wenn nicht.  
 
 
+  
+### Verlinkungen  
+Abfragen, ob eine ausgewählte URL ein interner oder externer Link ist.  
+```
+{% for set in iconsets %}
+{% set isExternal = set.url starts with 'http' %}
+    <a href="{{ set.url|raw }}" {% if isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}><span class="bi">&#x{{ set.icon|raw }}</span></a>
+{% endfor %}
+```
+Hier wird (in der for-Schleife) abgefragt, ob die URL mit einem `http` beginnt. Falls JA, wird ein `target="_blank"` und `rel="noopener noreferrer"` gesetzt.
 
 
 
