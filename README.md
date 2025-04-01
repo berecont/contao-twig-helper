@@ -141,7 +141,25 @@ Abfragen, ob eine ausgewählte URL ein interner oder externer Link ist.
     <a href="{{ set.url|raw }}" {% if isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}><span class="bi">&#x{{ set.icon|raw }}</span></a>
 {% endfor %}
 ```
-Hier wird (in der for-Schleife) abgefragt, ob die URL mit einem `http` beginnt. Falls JA, wird ein `target="_blank"` und `rel="noopener noreferrer"` gesetzt.
+Hier wird (in der for-Schleife) abgefragt, ob die URL mit einem `http` beginnt. Falls JA, wird ein `target="_blank"` und `rel="noopener noreferrer"` gesetzt.  
+
+
+
+
+### Gallery template - Klassen in `<li>` einfügen  
+```
+{# templates/content_element/gallery.html.twig #}
+{% extends "@Contao/content_element/gallery.html.twig" %}
+
+{% block list_item_attributes -%}
+  {%- set list = list|merge({'item_attributes': attrs().addClass('gallery-item').mergeWith(list.item_attributes|default)}) -%}
+  {{ parent() }}
+{%- endblock %}
+```
+[Contao Forum](https://community.contao.org/de/showthread.php?88193-5-3-31-Gallery-Template-anpassen&p=594568&viewfull=1#post594568)  
+Unter `#5`wird auch vermerkt, warum die Variante von mir unter `#4`nicht verwendet werden sollte.  
+
+
 
 
 
