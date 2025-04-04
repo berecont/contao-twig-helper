@@ -145,7 +145,7 @@ Hier wird (in der for-Schleife) abgefragt, ob die URL mit einem `http` beginnt. 
 
 
 
-
+## Gallery
 ### Gallery template - Klassen in `<li>` einfügen  
 ```
 {# templates/content_element/gallery.html.twig #}
@@ -159,7 +159,23 @@ Hier wird (in der for-Schleife) abgefragt, ob die URL mit einem `http` beginnt. 
 [Contao Forum](https://community.contao.org/de/showthread.php?88193-5-3-31-Gallery-Template-anpassen&p=594568&viewfull=1#post594568)  
 Unter `#5`wird auch vermerkt, warum die Variante von mir unter `#4`nicht verwendet werden sollte.  
 
+### Bild als background-image:  
+```
+{% extends "@Contao/content_element/gallery.html.twig" %}
 
+{% block list_component %}
+  <ul class="custom-gallery">
+    {% for item in items %}
+      {% if item.image.picture.img.src is defined %}
+
+        {% set imagePath = item.image.getImageSrc(true) %}
+        <li style="background-image: url('{{ imagePath }}');"></li>
+        
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endblock %}
+```
 
 
 
