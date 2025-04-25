@@ -177,6 +177,19 @@ Unter `#5`wird auch vermerkt, warum die Variante von mir unter `#4`nicht verwend
 {% endblock %}
 ```
 
+## headline eine Klasse mitgeben  
+[Slack](https://contao.slack.com/archives/C040UGZL9PU/p1745586027804109?thread_ts=1745584293.195699&cid=C040UGZL9PU)  
+Problem: Controller oder Extension einer anderen Anwendung darf die Anpassung nicht überschreiben oder doppelt ausgeben  
+`class="..." class="..."`
+```
+{# templates/component/_headline.html.twig #}
+{% use "@Contao/component/_headline.html.twig" %}
+
+{% block headline_attributes -%}
+    {% set headline = headline|merge({attributes: attrs().addClass('foobar').mergeWith(headline.attributes|default)}) %}
+    {{ parent() }}
+{%- endblock %}
+```
 
 
 
