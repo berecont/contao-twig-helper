@@ -176,6 +176,8 @@ Unter `#5`wird auch vermerkt, warum die Variante von mir unter `#4`nicht verwend
   </ul>
 {% endblock %}
 ```
+siehe auch [Contao Forum](https://community.contao.org/de/showthread.php?88360-Contao-5-URL-von-Inhaltselement-Bild-finden&p=595827&viewfull=1#post595827)  
+
 
 ## headline eine Klasse mitgeben  
 [Slack](https://contao.slack.com/archives/C040UGZL9PU/p1745586027804109?thread_ts=1745584293.195699&cid=C040UGZL9PU)  
