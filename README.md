@@ -192,6 +192,14 @@ Problem: Controller oder Extension einer anderen Anwendung darf die Anpassung ni
     {{ parent() }}
 {%- endblock %}
 ```
+## CE Download, dem Link eine Klasse geben  
+```
+{% extends "@Contao/content_element/download.html.twig" %}
 
+{% set download_link_attributes = attrs()
+    .addClass('foobar')
+    .mergeWith(download_link_attributes|default)
+%}
+```
 
 
