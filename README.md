@@ -197,9 +197,38 @@ Problem: Controller oder Extension einer anderen Anwendung darf die Anpassung ni
 {% extends "@Contao/content_element/download.html.twig" %}
 
 {% set download_link_attributes = attrs()
-    .addClass('foobar')
+    .addClass('foobar') 
     .mergeWith(download_link_attributes|default)
 %}
 ```
+## RSCE mit Nodes  
+Erweiterung [terminal42/contao-node] und RSCE nutzen  
+`rsce_nodes_config.php`
+```
+<?php
+
+return [
+    'label' => ['Nodes','Nodes auswählen.'],
+    'types' => ['content'],
+    'contentCategory' => 'texts',
+    'standardFields' => ['cssID'],
+    'fields' => [
+        'nodes' => [
+            'inputType' => 'standardField',
+        ],
+    ],
+];
+```
+`rsce_nodes.html.twig`  
+```
+{% set nodeIds = nodes|deserialize %}
+
+<div class="{{ class }} nodes-box" {{ cssID|raw }}>
+  {% for id in nodeIds %}
+    {{ insert_tag('insert_node::' ~ id) | raw }}
+  {% endfor %}
+</div>
+```
+
 
 
