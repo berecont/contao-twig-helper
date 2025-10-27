@@ -229,6 +229,27 @@ return [
   {% endfor %}
 </div>
 ```
+## Galerie - Bootstrap 5 mit masonry  
+Bootstrap 5 bietet die Möglichkeit über `data-masonry='{"percentPosition": true }'` Masonry zu nutzen  
+***Beispiel*** Klasse `galerie-masonry` mit einfügen und über die im Backend ausgewählten *Vorschaubilder pro Reihe* die `col-` zu nutzen:  
+```
+{% extends "@Contao/content_element/gallery.html.twig" %}
 
+{% set attributes = attrs()
+    .addClass("content-#{type}--cols-#{items_per_row|default(4)} galerie-masonry")
+    .mergeWith(attributes|default)
+%}
+
+{% block list_attributes %}
+    {# add class to <ul> #}
+    {{ parent() }} class="row" data-masonry='{"percentPosition": true }'
+{% endblock %}
+
+{% block list_item_attributes %}
+    {% set col = 12 // data.perRow %}
+    {# add class to <li> #}
+    {{ parent() }} class="col-6 col-lg-{{ col }}" 
+{% endblock %}
+```
 
 
