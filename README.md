@@ -251,5 +251,23 @@ Bootstrap 5 bietet die Möglichkeit über `data-masonry='{"percentPosition": tru
     {{ parent() }} class="col-6 col-lg-{{ col }}" 
 {% endblock %}
 ```
+## Tabelle `<table>` Klassen und style hinzufügen  
+```
+{% extends "@Contao/content_element/table.html.twig" %}
+
+{% block table_attributes %}
+  {% set table_attributes = attrs() 
+      .addClass('table row--2')
+      .addStyle("table-layout: fixed; width: 100%;")
+      .mergeWith(table_attributes|default)
+    %}
+  {{ parent() }} 
+{% endblock %}
+```
+**Ergebnis:**  
+```
+<div class="content-table">
+  <table class="table row--2" style="table-layout: fixed; width: 100%;">
+```
 
 
