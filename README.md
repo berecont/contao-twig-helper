@@ -241,14 +241,21 @@ Bootstrap 5 bietet die Möglichkeit über `data-masonry='{"percentPosition": tru
 %}
 
 {% block list_attributes %}
-    {# add class to <ul> #}
-    {{ parent() }} class="row" data-masonry='{"percentPosition": true }'
+    {% set list_attributes = attrs() 
+        .addClass('row')    
+        .set('data-masonry', '{"percentPosition": true }')
+        .mergeWith(list_attributes|default)
+    %}
+    {{ list_attributes }} 
 {% endblock %}
 
 {% block list_item_attributes %}
-    {% set col = 12 // data.perRow %}
-    {# add class to <li> #}
-    {{ parent() }} class="col-6 col-lg-{{ col }}" 
+    {% set col = 12 // data.perRow %} 
+    {% set list_item_attributes = attrs()
+        .addClass('col-6 col-lg-' ~ col)
+        .mergeWith(list_item_attributes|default)
+    %}
+    {{ list_item_attributes }}
 {% endblock %}
 ```
 ## Tabelle `<table>` Klassen und style hinzufügen  
