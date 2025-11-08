@@ -276,5 +276,20 @@ Bootstrap 5 bietet die Möglichkeit über `data-masonry='{"percentPosition": tru
 <div class="content-table">
   <table class="table row--2" style="table-layout: fixed; width: 100%;">
 ```
+## Player eine Klasse vergeben  
+`/templates/content_element/player.html.twig`
+```
+{% extends "@Contao/content_element/player.html.twig" %}
 
+{% block attributes %}
+  {% set aspectClass = 'aspect--' ~ data.playerAspect|replace({':': '-'}) %}
+
+  {% set attributes = attributes
+    .addClass('aspect')
+    .addClass(aspectClass)
+  %}
+
+  {{ parent() }}
+{% endblock %}
+```
 
