@@ -276,6 +276,15 @@ Bootstrap 5 bietet die Möglichkeit über `data-masonry='{"percentPosition": tru
 <div class="content-table">
   <table class="table row--2" style="table-layout: fixed; width: 100%;">
 ```
+## Tabelle `scope="col"` in `th` einfügen  
+```
+{% extends "@Contao/content_element/table.html.twig" %}
+{% use "@Contao/component/_table.html.twig" %}
+
+{% set default_header_cell_attributes = (default_header_cell_attributes|default({}))|merge({
+    scope: 'col'
+}) %}
+```
 ## Player eine Klasse vergeben  
 `/templates/content_element/player.html.twig`
 ```
